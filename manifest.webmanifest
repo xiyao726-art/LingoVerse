@@ -1,0 +1,27 @@
+{
+  "name": "语界 LingoVerse · 多语种在线学习",
+  "short_name": "语界",
+  "description": "支持英语、日语、韩语的沉浸式语言学习平台：分级课程、单词闪卡、语法练习、口语跟读、听力训练、进度追踪、个性化路径与学习社区。",
+  "id": "/",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
+  "background_color": "#F4F5FB",
+  "theme_color": "#6C5CE7",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "categories": ["education", "productivity"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "继续学习", "short_name": "学习", "url": "./#/", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "单词复习", "short_name": "单词", "url": "./#/practice/vocab", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "学习社区", "short_name": "社区", "url": "./#/community", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

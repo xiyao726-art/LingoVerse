@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>语界 LingoVerse · 多语种在线学习平台</title>
+<meta name="description" content="支持英语、日语、韩语的沉浸式在线语言学习平台：分级课程、互动练习、口语跟读、听力训练、个性化路径与学习社区。">
+<!-- PWA：可安装到桌面 / 手机主屏幕，支持离线启动 -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#6C5CE7">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon.png">
+<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="语界">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- 未登录：落地页 + 登录注册 -->
+<div id="auth-root" class="auth-root hidden"></div>
+
+<!-- 已登录：应用主体 -->
+<div id="app-root" class="app-root hidden">
+  <!-- 侧边导航 -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand" data-nav="#/">
+      <span class="brand-logo">语</span>
+      <div class="brand-text">
+        <strong>语界</strong>
+        <small>LingoVerse</small>
+      </div>
+    </div>
+    <nav class="nav-list" id="nav-list">
+      <a class="nav-item" data-nav="#/"><span class="nav-ico">🏠</span>首页</a>
+      <a class="nav-item" data-nav="#/courses"><span class="nav-ico">📚</span>分级课程</a>
+      <a class="nav-item" data-nav="#/practice/vocab"><span class="nav-ico">🃏</span>单词记忆</a>
+      <a class="nav-item" data-nav="#/practice/grammar"><span class="nav-ico">✏️</span>语法练习</a>
+      <a class="nav-item" data-nav="#/practice/speaking"><span class="nav-ico">🎤</span>口语跟读</a>
+      <a class="nav-item" data-nav="#/practice/listening"><span class="nav-ico">🎧</span>听力训练</a>
+      <a class="nav-item" data-nav="#/progress"><span class="nav-ico">📈</span>学习进度</a>
+      <a class="nav-item" data-nav="#/community"><span class="nav-ico">💬</span>学习社区</a>
+      <a class="nav-item" data-nav="#/achievements"><span class="nav-ico">🏆</span>成就激励</a>
+    </nav>
+    <div class="sidebar-card" id="sidebar-daily"></div>
+  </aside>
+
+  <!-- 主区域 -->
+  <div class="main">
+    <header class="topbar">
+      <button class="icon-btn menu-btn" id="menu-btn" aria-label="菜单">☰</button>
+      <div class="topbar-lang" id="topbar-lang"></div>
+      <div class="topbar-stats">
+        <div class="chip chip-streak" title="连续学习天数">🔥 <b id="tb-streak">0</b><span>天</span></div>
+        <div class="chip chip-xp" title="经验值">⭐ <b id="tb-xp">0</b><span>XP</span></div>
+        <div class="chip chip-level" title="学习等级">🎖️ Lv.<b id="tb-level">1</b></div>
+      </div>
+      <div class="topbar-user" id="topbar-user"></div>
+    </header>
+    <main id="view" class="view"></main>
+  </div>
+</div>
+
+<!-- 遮罩（移动端侧栏） -->
+<div class="overlay" id="overlay"></div>
+<!-- 弹窗 / Toast 容器 -->
+<div id="modal-root"></div>
+<div id="toast-root" class="toast-root"></div>
+
+<script src="js/data.js"></script>
+<script src="js/store.js"></script>
+<script src="js/speech.js"></script>
+<script src="js/learn.js"></script>
+<script src="js/social.js"></script>
+<script src="js/app.js"></script>
+<script>
+  // 注册 Service Worker（离线可用；不支持的浏览器静默跳过）
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("./sw.js").catch(function () {});
+    });
+  }
+</script>
+</body>
+</html>
